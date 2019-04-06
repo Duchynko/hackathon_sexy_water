@@ -1,4 +1,4 @@
-package com.example.sexyflutter;
+package com.example.sexy_flutter;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;
