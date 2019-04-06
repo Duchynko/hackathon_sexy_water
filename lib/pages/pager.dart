@@ -63,7 +63,7 @@ class _SolutionPager extends State<SolutionPager> with TickerProviderStateMixin{
         (selectedIndex.value - index) * _kViewportFraction, 0.0
       ));
       var resizeFactor = (1 -
-        (((selectedIndex.value).abs() * 0.2).clamp(0.0, 1.0))
+        (((selectedIndex.value - index).abs() * 0.2).clamp(0.0, 1.0))
       );
       pages.add(
         _contentWidget(
@@ -82,6 +82,61 @@ class _SolutionPager extends State<SolutionPager> with TickerProviderStateMixin{
 
   @override
   Widget build(BuildContext context) {
-    return null;
+    return Stack(
+      children: <Widget>[
+        Positioned.fill(
+          child: Container(
+            decoration: BoxDecoration(
+              gradient: Solutions.solutions[selectedIndex.value.toInt()].background
+            ),
+          ),
+        ),
+        Align(
+          alignment: Alignment.topCenter,
+          child: Padding(
+            padding: EdgeInsets.only(top: 50.0),
+            child: Text(
+              "DID YOU KNOW?",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 35.0,
+                fontWeight: FontWeight.w600,
+                fontFamily: 'Dosis'
+              ),),
+          ),
+        ),
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: Padding(
+            padding: EdgeInsets.only(bottom: 40.0),
+            // child:,
+          ),
+        ),
+        PageView.builder(
+          itemCount: Solutions.solutions.length,
+          itemBuilder: (BuildContext context, int itemCount) {
+            return Container();
+          },
+          controller: _backgroundPageController,
+        ),
+        NotificationListener<ScrollNotification>(
+          onNotification: (ScrollNotification notification) {
+            if (notification.depth == 0 && notification is ScrollUpdateNotification) {
+              selectedIndex.value = _pageController.page;
+              if(_backgroundPageController.page != _pageController.page) {
+                _backgroundPageController.position
+                    .jumpTo(_pageController.position.pixels / _kViewportFraction);
+              }
+              setState(() {});
+            }
+            return false;
+          },
+          child: PageView(
+            controller: _pageController,
+            children: _buildPages(),
+          ),
+        )
+      ],
+    );
   }
 }

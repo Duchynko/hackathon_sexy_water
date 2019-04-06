@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:sexy_flutter/widgets/full_dialog.dart';
 import '../model/solution.dart';
 
-class ItemCard extends StatelessWidget {
+class ItemCard extends StatefulWidget {
   const ItemCard({this.solution, this.cardColor, this.increment, this.decrement});
 
   final LinearGradient cardColor;
@@ -11,14 +12,14 @@ class ItemCard extends StatelessWidget {
   final VoidCallback decrement;
 
   @override
+  _ItemCardState createState() => new _ItemCardState();
+}
+
+class _ItemCardState extends State<ItemCard> {
+
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.blueAccent,
-      // appBar: AppBar(
-      //   backgroundColor: Colors.black,
-      //   title: Text(widget.title),
-      // ),
-      body: Center(
+    return Center(
         child: Padding(
           padding: EdgeInsets.only(top: 20.0),
           child: Card(
@@ -37,7 +38,7 @@ class ItemCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     SvgPicture.asset(
-                      "assets/images/washing-machine.svg",
+                      widget.solution.image,
                       width: 80.0,
                       height: 80.0,
                     ),
@@ -45,18 +46,19 @@ class ItemCard extends StatelessWidget {
                       child: Column(
                         children: <Widget>[
                           Text(
-                            "Washing Machine",
+                            widget.solution.name,
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontSize: 50.0,
                               fontWeight: FontWeight.w600,
-                              fontFamily: 'Qwigley'
+                              fontFamily: 'Qwigley',
+                              letterSpacing: 2.5
                             ),
                           ),
                           Padding(
                             padding: EdgeInsets.only(top: 15.0),
                             child: Text(
-                              "Use washing machine outside of peek hours",
+                              widget.solution.description,
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 color: Colors.black,
@@ -74,24 +76,31 @@ class ItemCard extends StatelessWidget {
                       children: <Widget>[
                         Container(
                           decoration: BoxDecoration(
-                            color: Colors.blueAccent
+                            color: widget.cardColor.colors[0]
                           ),
-                          width: 70,
+                          width: 50,
                           height: 1.0,
                         ),
                         Container(
                           child: OutlineButton(
-                            borderSide: BorderSide(color: Colors.blueAccent),
-                            onPressed: () => null,
+                            borderSide: BorderSide(color: widget.cardColor.colors[0]),
+                            onPressed: () => {
+                              Navigator.of(context).push(new MaterialPageRoute<Null>(
+                                  builder: (BuildContext context) {
+                                    return new SolutionDetailsDialog(widget.solution, widget.cardColor);
+                                  },
+                                fullscreenDialog: true
+                              ))
+                            },
                             shape: StadiumBorder(),
                             child: SizedBox(
-                              width: 60.0,
+                              width: 90.0,
                               height: 45.0,
                               child: Center(
                                 child: Text(
-                                  "Tip",
+                                  "Read more",
                                   style: TextStyle(
-                                    color: Colors.blueAccent,
+                                    color: widget.cardColor.colors[0],
                                     fontSize: 17.0,
                                     fontWeight: FontWeight.w400
                                   ),
@@ -103,9 +112,9 @@ class ItemCard extends StatelessWidget {
                         ),
                         Container(
                           decoration: BoxDecoration(
-                            color: Colors.blueAccent
+                            color: widget.cardColor.colors[0]
                           ),
-                          width: 70,
+                          width: 50,
                           height: 1.0,
                         ),
                       ],
@@ -175,7 +184,7 @@ class ItemCard extends StatelessWidget {
             ),
           ),
         ),
-      ),
-    );
+      );
   }
+
 }
