@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:sexy_flutter/widgets/full_dialog.dart';
+import 'package:sexy_flutter/pages/solution.dart';
 import '../model/solution.dart';
 
 class ItemCard extends StatefulWidget {

@@ -6,13 +6,13 @@ import 'package:flutter/material.dart';
 
 class SolutionPager extends StatefulWidget {
   @override
-  _SolutionPager createState() => _SolutionPager();
+  _SolutionPagerState createState() => _SolutionPagerState();
     
   }
 
 const double _kViewportFraction = 0.75;
   
-class _SolutionPager extends State<SolutionPager> with TickerProviderStateMixin{
+class _SolutionPagerState extends State<SolutionPager> with TickerProviderStateMixin{
 
   final PageController _backgroundPageController = PageController();
   final PageController _pageController = PageController(viewportFraction: _kViewportFraction);

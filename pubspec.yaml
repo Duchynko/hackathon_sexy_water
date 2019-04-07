@@ -53,6 +53,18 @@ flutter:
    - assets/images/pump.svg
    - assets/images/peak.svg
    - assets/images/shower.svg
+   - assets/images/lulu.png
+   - assets/images/daily_avg.jpg
+   - assets/images/weekly_avg.jpg
+   - assets/images/monthly_avg.jpg
+   - assets/images/categories/bathtub.svg
+   - assets/images/categories/dishwasher.svg
+   - assets/images/categories/faucet.svg
+   - assets/images/categories/leak.svg
+   - assets/images/categories/other.svg
+   - assets/images/categories/toilet.svg
+   - assets/images/categories/shower.svg
+   - assets/images/categories/washing-machine.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
