@@ -57,6 +57,8 @@ flutter:
    - assets/images/daily_avg.jpg
    - assets/images/weekly_avg.jpg
    - assets/images/monthly_avg.jpg
+   - assets/images/daily_overview.jpg
+   - assets/images/daily_example.jpg
    - assets/images/categories/bathtub.svg
    - assets/images/categories/dishwasher.svg
    - assets/images/categories/faucet.svg

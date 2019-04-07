@@ -49,7 +49,7 @@ class _ItemCardState extends State<ItemCard> {
                             widget.solution.name,
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                              fontSize: 40.0,
+                              fontSize: 35.0,
                               fontWeight: FontWeight.w600,
                               fontFamily: 'Qwigley',
                               letterSpacing: 3.0

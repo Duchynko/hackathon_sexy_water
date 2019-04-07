@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: Dashboard(),
-      // debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: false,
     );
   }
 }

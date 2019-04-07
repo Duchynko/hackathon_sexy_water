@@ -100,16 +100,10 @@ class _SolutionPagerState extends State<SolutionPager> with TickerProviderStateM
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 35.0,
-                fontWeight: FontWeight.w600,
+                fontWeight: FontWeight.w500,
                 fontFamily: 'Dosis'
-              ),),
-          ),
-        ),
-        Align(
-          alignment: Alignment.bottomCenter,
-          child: Padding(
-            padding: EdgeInsets.only(bottom: 40.0),
-            // child:,
+              ),
+            ),
           ),
         ),
         PageView.builder(

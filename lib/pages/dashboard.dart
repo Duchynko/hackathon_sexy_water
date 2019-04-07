@@ -15,16 +15,18 @@ class Dashboard extends StatefulWidget {
 class _DashboardState extends State<Dashboard> {
 
   _goDeeper() {
-    if (widget.deepLevel == 0) {
-      widget.deepLevel = 1;
-      widget.graph = "assets/images/daily_overview.jpg";
-    } else if (widget.deepLevel == 1) {
-      widget.deepLevel = 2;
-      widget.graph = "assets/images/daily_example.jpg";
-    } else {
-      widget.deepLevel = 0;
-      widget.graph = "assets/images/daily_avg.jpg";
-    }
+    setState(() {
+      if (widget.deepLevel == 0) {
+        widget.deepLevel = 1;
+        widget.graph = "assets/images/daily_overview.jpg";
+      } else if (widget.deepLevel == 1) {
+        widget.deepLevel = 2;
+        widget.graph = "assets/images/daily_example.jpg";
+      } else {
+        widget.deepLevel = 0;
+        widget.graph = "assets/images/daily_avg.jpg";
+      }   
+    });
   }
 
   @override
@@ -70,9 +72,9 @@ class _DashboardState extends State<Dashboard> {
                     color: Color(0xFF127BBD),
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.only(top: 14.0, bottom: 14.0, right: 8.0, left: 8.0),
+                    padding: const EdgeInsets.only(top: 14.0, bottom: 14.0, right: 12.0, left: 12.0),
                     child: Text(
-                      "My name is lulu and I'm here to help you become more sustainable by using water efficiently",
+                      "My name is Lulu and I'm here to help you become more sustainable by using water efficiently",
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 16.0
@@ -91,6 +93,7 @@ class _DashboardState extends State<Dashboard> {
             child: Column(
               children: <Widget>[
                 Text(widget.timeFrame + " WATER CONSUMPTION",
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Color(0xFF127BBD),
                     fontSize: 24.0,
@@ -100,9 +103,7 @@ class _DashboardState extends State<Dashboard> {
                 Padding(
                   padding: const EdgeInsets.only(top: 30.0, bottom: 10.0, right: 10.0, left: 10.0),
                   child: GestureDetector(
-                    onTap: () => {
-                      _goDeeper();
-                    },
+                    onTap: () => _goDeeper(),
                     child: Image.asset(
                       widget.graph,
                       width: MediaQuery.of(context).size.width - 150,
@@ -181,8 +182,8 @@ class _DashboardState extends State<Dashboard> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Tile(Colors.green, "SHOWER", "assets/images/categories/shower.svg"),
-                    Tile(Colors.red, "TOILET", "assets/images/categories/toilet.svg")
+                    Tile(Colors.red, "SHOWER", "assets/images/categories/shower.svg"),
+                    Tile(Colors.green, "TOILET", "assets/images/categories/toilet.svg")
                   ],
                 ),
                 Row(
