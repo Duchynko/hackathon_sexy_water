@@ -4,6 +4,8 @@ import 'package:sexy_flutter/widgets/tile.dart';
 class Dashboard extends StatefulWidget {
 
   var filter = "day";
+  var timeFrame = "DAILY";
+  var deepLevel = 0;
   var graph = "assets/images/daily_avg.jpg";
 
   @override
@@ -11,6 +13,19 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
+
+  _goDeeper() {
+    if (widget.deepLevel == 0) {
+      widget.deepLevel = 1;
+      widget.graph = "assets/images/daily_overview.jpg";
+    } else if (widget.deepLevel == 1) {
+      widget.deepLevel = 2;
+      widget.graph = "assets/images/daily_example.jpg";
+    } else {
+      widget.deepLevel = 0;
+      widget.graph = "assets/images/daily_avg.jpg";
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +90,7 @@ class _DashboardState extends State<Dashboard> {
             color: Colors.grey.shade200,
             child: Column(
               children: <Widget>[
-                Text("DAILY WATER CONSUMPTION",
+                Text(widget.timeFrame + " WATER CONSUMPTION",
                   style: TextStyle(
                     color: Color(0xFF127BBD),
                     fontSize: 24.0,
@@ -84,10 +99,15 @@ class _DashboardState extends State<Dashboard> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 30.0, bottom: 10.0, right: 10.0, left: 10.0),
-                  child: Image.asset(
-                    widget.graph,
-                    width: MediaQuery.of(context).size.width - 150,
-                    ),
+                  child: GestureDetector(
+                    onTap: () => {
+                      _goDeeper();
+                    },
+                    child: Image.asset(
+                      widget.graph,
+                      width: MediaQuery.of(context).size.width - 150,
+                      ),
+                  ),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -95,6 +115,7 @@ class _DashboardState extends State<Dashboard> {
                     RaisedButton(
                       onPressed: () {
                         setState(() {
+                          widget.timeFrame = "DAILY";
                           widget.filter = "day";
                           widget.graph = "assets/images/daily_avg.jpg";
                         });
@@ -109,6 +130,7 @@ class _DashboardState extends State<Dashboard> {
                     RaisedButton(
                       onPressed: () {
                         setState(() {
+                          widget.timeFrame = "WEEKLY";
                           widget.filter = "week";
                           widget.graph = "assets/images/weekly_avg.jpg";
                         });
@@ -123,6 +145,7 @@ class _DashboardState extends State<Dashboard> {
                     RaisedButton(
                       onPressed: () {
                         setState(() {
+                          widget.timeFrame = "MONTHLY";
                           widget.filter = "month";
                           widget.graph = "assets/images/monthly_avg.jpg";
                         });
