@@ -12,6 +12,7 @@ class Bubble extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Container(
+          width: MediaQuery.of(context).size.width - 100,
           margin: const EdgeInsets.all(5.0),
           padding: const EdgeInsets.all(8.0),
           decoration: BoxDecoration(
@@ -28,16 +29,12 @@ class Bubble extends StatelessWidget {
               bottomRight: Radius.circular(15.0),
             ),
           ),
-          child: Stack(
-            children: <Widget>[
-              Text(message,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.w500
-                ),
-              ),
-            ],
+          child: Text(message,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 16.0,
+              fontWeight: FontWeight.w500
+            ),
           ),
         )
       ],

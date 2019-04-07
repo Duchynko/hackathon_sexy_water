@@ -49,10 +49,10 @@ class _ItemCardState extends State<ItemCard> {
                             widget.solution.name,
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                              fontSize: 50.0,
+                              fontSize: 40.0,
                               fontWeight: FontWeight.w600,
                               fontFamily: 'Qwigley',
-                              letterSpacing: 2.5
+                              letterSpacing: 3.0
                             ),
                           ),
                           Padding(
@@ -132,7 +132,7 @@ class _ItemCardState extends State<ItemCard> {
                               ),
                               Padding(
                                 padding: EdgeInsets.only(top: 8.0),
-                                child: Text("1.24kg"),
+                                child: Text((widget.solution.co2 - widget.solution.secondCo2).toString() + "kg"),
                               )
                             ],
                           ),
@@ -145,7 +145,7 @@ class _ItemCardState extends State<ItemCard> {
                               ),
                               Padding(
                                 padding: EdgeInsets.only(top: 8.0),
-                                child: Text("21.5l"),
+                                child: Text((widget.solution.water - widget.solution.secondWater).toString() + "l"),
                               )
                             ],
                           ),
@@ -158,7 +158,7 @@ class _ItemCardState extends State<ItemCard> {
                               ),
                               Padding(
                                 padding: EdgeInsets.only(top: 8.0),
-                                child: Text("5.5W"),
+                                child: Text((widget.solution.energy - widget.solution.secondEnergy).toString() + "kWh"),
                               )
                             ],
                           ),
@@ -171,13 +171,20 @@ class _ItemCardState extends State<ItemCard> {
                               ),
                               Padding(
                                 padding: EdgeInsets.only(top: 8.0),
-                                child: Text("251€"),
+                                child: Text((widget.solution.money - widget.solution.secondMoney).toString() + "dkk"),
                               )
                             ],
                           )
                         ],
                       ),
-                    )
+                    ),
+                    Text("per year",
+                      style: TextStyle(
+                        fontSize: 25.0,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: 'Qwigley',
+                        letterSpacing: 3.0
+                      ))
                   ],
                 ),
               ),

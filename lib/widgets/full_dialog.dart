@@ -9,6 +9,7 @@ class SolutionDetailsDialog extends StatefulWidget {
   final LinearGradient cardColor;
   final Solution solution;
 
+
   @override
   SolutionDetailsDialogState createState() => new SolutionDetailsDialogState();
 }
@@ -18,7 +19,7 @@ class SolutionDetailsDialogState extends State<SolutionDetailsDialog> {
   Widget build(BuildContext context) {
     return Card(
       margin: EdgeInsets.only(right: 8.0, left: 8.0, bottom: 8.0),
-      color: Colors.white,
+      color: Colors.grey.shade100,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
@@ -35,18 +36,24 @@ class SolutionDetailsDialogState extends State<SolutionDetailsDialog> {
                         fontSize: 60.0,
                         fontFamily: 'Qwigley',
                         fontWeight: FontWeight.w800,
-                        letterSpacing: 2.0
+                        letterSpacing: 3.0
                     ),
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.only(right: 34.0, left: 34.0),
-                  child: Text(
-                    widget.solution.fullDescription,
-                    style: TextStyle(
-                        fontSize: 18.0,
-                        wordSpacing: 1.2,
+                Card(
+                  margin: EdgeInsets.only(left: 34.0, right: 34.0, bottom: 10.0),
+                  elevation: 5.0,
+                  child: Padding(
+                    padding: EdgeInsets.all(16.0),
+                    child: Text(
+                      widget.solution.fullDescription,
+                      style: TextStyle(
+                        fontFamily: 'Dosis',
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.w500,
+                        wordSpacing: 1.0,
                         height: 1.0,
+                      ),
                     ),
                   ),
                 )
@@ -55,13 +62,14 @@ class SolutionDetailsDialogState extends State<SolutionDetailsDialog> {
           ),
           Row(children: <Widget>[
             Image.asset("assets/images/lulu.gif", width: 50.0),
-            Bubble("Try to wash your clothes tonight at 10:30pm", Colors.blue),
+            Bubble(widget.solution.message, Colors.blue),
           ]),
           Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 Column(children: <Widget>[
-                  Text("Peek hours",
+                  Text(
+                    widget.solution.firstTable,
                     style: TextStyle(
                       fontSize: 16.0
                     )
@@ -86,12 +94,12 @@ class SolutionDetailsDialogState extends State<SolutionDetailsDialog> {
                             Container(
                               padding: EdgeInsets.all(10.0),
                               child: SvgPicture.asset(
-                                "assets/images/water.svg",
+                                "assets/images/co2.svg",
                                 width: 20.0,
                                 height: 20.0,
                               ),
                             ),
-                            Text(widget.solution.water.toString() + "L")
+                            Text(widget.solution.secondCo2.toString() + "kg")
                           ]),
                           TableRow(children: <Widget>[
                             Container(
@@ -102,29 +110,29 @@ class SolutionDetailsDialogState extends State<SolutionDetailsDialog> {
                                 height: 20.0,
                               ),
                             ),
-                            Text(widget.solution.water.toString() + "L")
+                            Text(widget.solution.secondWater.toString() + "l")
                           ]),
                           TableRow(children: <Widget>[
                             Container(
                               padding: EdgeInsets.all(10.0),
                               child: SvgPicture.asset(
-                                "assets/images/water.svg",
+                                "assets/images/energy.svg",
                                 width: 20.0,
                                 height: 20.0,
                               ),
                             ),
-                            Text(widget.solution.water.toString() + "L")
+                            Text(widget.solution.secondEnergy.toString() + "kWh")
                           ]),
                           TableRow(children: <Widget>[
                             Container(
                               padding: EdgeInsets.all(10.0),
                               child: SvgPicture.asset(
-                                "assets/images/water.svg",
+                                "assets/images/money.svg",
                                 width: 20.0,
                                 height: 20.0,
                               ),
                             ),
-                            Text(widget.solution.water.toString() + "L")
+                            Text(widget.solution.secondMoney.toString() + "dkk")
                           ])
                         ],
                       ),
@@ -134,7 +142,7 @@ class SolutionDetailsDialogState extends State<SolutionDetailsDialog> {
                 Column(
                   children: <Widget>[
                     Text(
-                      "Off-peek hours",
+                      widget.solution.secondTable,
                       style: TextStyle(
                         fontSize: 16.0,
                       ),
@@ -159,12 +167,12 @@ class SolutionDetailsDialogState extends State<SolutionDetailsDialog> {
                               Container(
                                 padding: EdgeInsets.all(10.0),
                                 child: SvgPicture.asset(
-                                  "assets/images/water.svg",
+                                  "assets/images/co2.svg",
                                   width: 20.0,
                                   height: 20.0,
                                 ),
                               ),
-                              Text(widget.solution.water.toString() + "L")
+                              Text(widget.solution.co2.toString() + "g")
                             ]),
                             TableRow(children: <Widget>[
                               Container(
@@ -175,29 +183,29 @@ class SolutionDetailsDialogState extends State<SolutionDetailsDialog> {
                                   height: 20.0,
                                 ),
                               ),
-                              Text(widget.solution.water.toString() + "L")
+                              Text(widget.solution.water.toString() + "l")
                             ]),
                             TableRow(children: <Widget>[
                               Container(
                                 padding: EdgeInsets.all(10.0),
                                 child: SvgPicture.asset(
-                                  "assets/images/water.svg",
+                                  "assets/images/energy.svg",
                                   width: 20.0,
                                   height: 20.0,
                                 ),
                               ),
-                              Text(widget.solution.water.toString() + "L")
+                              Text(widget.solution.energy.toString() + "kWh")
                             ]),
                             TableRow(children: <Widget>[
                               Container(
                                 padding: EdgeInsets.all(10.0),
                                 child: SvgPicture.asset(
-                                  "assets/images/water.svg",
+                                  "assets/images/money.svg",
                                   width: 20.0,
                                   height: 20.0,
                                 ),
                               ),
-                              Text(widget.solution.water.toString() + "L")
+                              Text(widget.solution.money.toString() + "dkk")
                             ])
                           ],
                         ),
@@ -205,66 +213,8 @@ class SolutionDetailsDialogState extends State<SolutionDetailsDialog> {
                     ),
                   ],
                 ),
-              ]),
-          Container(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                Column(
-                  children: <Widget>[
-                    SvgPicture.asset(
-                      "assets/images/co2.svg",
-                      width: 30.0,
-                      height: 30.0,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 8.0),
-                      child: Text("1.24kg"),
-                    )
-                  ],
-                ),
-                Column(
-                  children: <Widget>[
-                    SvgPicture.asset(
-                      "assets/images/water.svg",
-                      width: 30.0,
-                      height: 30.0,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 8.0),
-                      child: Text("21.5l"),
-                    )
-                  ],
-                ),
-                Column(
-                  children: <Widget>[
-                    SvgPicture.asset(
-                      "assets/images/energy.svg",
-                      width: 30.0,
-                      height: 30.0,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 8.0),
-                      child: Text("5.5W"),
-                    )
-                  ],
-                ),
-                Column(
-                  children: <Widget>[
-                    SvgPicture.asset(
-                      "assets/images/money.svg",
-                      width: 30.0,
-                      height: 30.0,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 8.0),
-                      child: Text("251€"),
-                    )
-                  ],
-                )
-              ],
+              ]
             ),
-          )
         ],
       ),
     );
