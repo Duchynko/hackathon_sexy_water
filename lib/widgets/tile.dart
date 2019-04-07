@@ -36,6 +36,7 @@ class Tile extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(top: 20.0),
               child: Text(name,
+                textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 16.0,
