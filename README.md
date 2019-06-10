@@ -1,16 +1,7 @@
 # sexy_flutter
 
-A new Flutter project.
+Demo dashboard for water consumption monitoring. I've built this demo app during the Auhack 2019 hackathon in Aarhus.
 
-## Getting Started
+App was built in a few hours, and it's just a static application with most of it's widgets hardcoded. I keep it here for my own reference.
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.io/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.io/docs/cookbook)
-
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.io/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+Feel free to use some of the custom widgets.
